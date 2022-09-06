@@ -144,18 +144,17 @@ function Inner() {
             <Room02 onClick={handleLevelClicked}/>
             <Room01 onClick={handleLevelClicked}/>
         </PresentationControls>
-    </>
-        ;
+    </>;
 }
 
 function App() {
-    
+
     return (
         <div className="h-screen w-full relative">
             <div className="absolute l-0 bottom-0 m-3">
-                <p>🧛 Built by <a href="https://twitter.com/Wahlstra">@Wahlstra</a> with React-Three-Fiber</p>
+                <p>🧛 Built by <a href="https://twitter.com/Wahlstra">@Wahlstra</a> with React-Three-Fiber. Repo <a href="https://github.com/magnuswahlstrand/demo-threejs-fiber-rooms">here</a></p>
                 <p>🍕 Inspiration by Bruno Simon's <a href="https://threejs-journey.com/">excellent course on Three JS</a></p>
-                <p>🚗 Code repository <a href="https://github.com/magnuswahlstrand/demo-threejs-fiber-rooms">here</a></p>
+                <p>🚗 <span className={"font-bold"}>Click the rooms</span> to move the camera. <span className={"font-bold"}>Hover the numbers</span> to get more information.</p>
             </div>
             <Leva hidden={!debug}/>
             <Canvas
