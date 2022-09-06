@@ -5,3 +5,5 @@
 a {
     text-decoration: underline;
 }
+
+html, body { height: 100% }

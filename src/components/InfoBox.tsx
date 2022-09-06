@@ -8,7 +8,7 @@ export default function InfoBox({position, label, text}: Props) {
     return <Html position={position}>
         <div className={"text-white group w-48 pointer-events-none"}>
             <div
-                className={"flex flex-col w-6 h-6 text-sm bg-black rounded-full text-white justify-center items-center cursor-help opacity-70 pointer-events-auto"}>
+                className={"flex flex-col w-6 h-6 text-sm bg-black rounded-full text-white justify-center items-center cursor-help opacity-70 pointer-events-auto select-none"}>
                 {label}
             </div>
             <div
