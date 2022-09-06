@@ -3,13 +3,14 @@ import {Canvas, useThree} from "@react-three/fiber";
 import Room from "./components/Room";
 import {useSpring} from "@react-spring/three";
 import {CameraHelper, DirectionalLight, DirectionalLightHelper, OrthographicCamera, Vector3} from "three";
-import {folder, useControls} from 'leva'
+import {folder, Leva, useControls} from 'leva'
 import Pizza from "./components/Pizza";
 import InfoBox from "./components/InfoBox";
 import RotatingCar from "./components/RotatingCar";
 import {useLayoutEffect, useRef} from 'react'
 import Vampire from "./components/Vampire";
 
+const debug = window.location.hash === '#debug'
 
 const basePosition = new Vector3(50, 50, 50)
 
@@ -20,7 +21,7 @@ function Room03({onClick}: { onClick: (pos: [number, number, number]) => void })
                  color={"#3C6792"}>
         <RotatingCar position={[3.2, 1, -2.5]}/>
         <InfoBox position={[3.2, 2, -7]} label={"3"}
-                 text={'🚗 Cars are pretty good too! They don\'t cast shadows, through. That\'s a fact.'}/>
+                 text={'🚗 Cars are pretty good too! This one runs on renewable fuel made from recycled pixels. That\'s a fact.'}/>
     </Room>;
 }
 
@@ -74,16 +75,9 @@ function Inner() {
 
     const ref = useRef<DirectionalLight>(null);
     const ref2 = useRef<OrthographicCamera>(null);
-    // const ref = useRef<AmbientLight>(null);
-    // const ref = useRef()
-    useLayoutEffect(() => {
-        // ref.current?.position.set(0, -10, 0)
-        // ref.current?.lookAt(10, 0, 0)
-        // ref.current?.updateMatrixWorld()
-    }, [])
 
 
-    const {showLighting, intensity, color, rotation, size, x, y, z} = useControls('My folder', {
+    const vals = useControls('My folder', {
         lighting: folder({
             showLighting: true,
             intensity: {value: 2, min: 0, max: 10, step: 1},
@@ -108,10 +102,10 @@ function Inner() {
             )
         }),
     })
+    const {showLighting, intensity, color, rotation, size, x, y, z} = vals
 
 
-    const debug = false
-    if(debug) {
+    if (debug) {
         useHelper(ref, DirectionalLightHelper, 2, "red")
         useHelper(ref2, CameraHelper)
         useLayoutEffect(() => void ref.current?.shadow.camera.updateProjectionMatrix(), [size])
@@ -123,7 +117,6 @@ function Inner() {
     }
 
 
-    let factor = 2;
     return <>
         <PresentationControls
             global
@@ -133,13 +126,12 @@ function Inner() {
             azimuth={[-Math.PI / 4, Math.PI / 4]}
         >
             {debug && <axesHelper args={[20]}/>}
+
             <ambientLight intensity={0.1}/>
-            {/*<pointLight ref={ref} intensity={intensity}/>*/}
-            {/*{ref.current && <pointLightHelper ref={ref} args={[ref.current, 1]} />}*/}
             <directionalLight
                 ref={ref}
                 color={color}
-                position={[5 * factor, 8 * factor, 13 * factor]}
+                position={[5 * 2, 8 * 2, 13 * 2]}
                 shadow-mapSize-width={2048}
                 shadow-mapSize-height={2048}
                 intensity={intensity}
@@ -157,12 +149,15 @@ function Inner() {
 }
 
 function App() {
-
-
+    
     return (
-        <div className="h-screen w-full">
-            {/*// https://codesandbox.io/s/threejs-journey-level-1-kheke?file=/src/App.js*/}
-
+        <div className="h-screen w-full relative">
+            <div className="absolute l-0 bottom-0 m-3">
+                <p>🧛 Built by <a href="https://twitter.com/Wahlstra">@Wahlstra</a> with React-Three-Fiber</p>
+                <p>🍕 Inspiration by Bruno Simon's <a href="https://threejs-journey.com/">excellent course on Three JS</a></p>
+                <p>🚗 Code repository <a href="https://github.com/magnuswahlstrand/demo-threejs-fiber-rooms">here</a></p>
+            </div>
+            <Leva hidden={!debug}/>
             <Canvas
                 camera={{fov: 30, position: basePosition}} className={"touch-none"}
                 shadows={true}>

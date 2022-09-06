@@ -27,22 +27,19 @@ const Pizza: React.FC<Props> = ({position}) => {
         box.materials[key].metalness = 0;
     }
 
-    const ref = React.useRef<Mesh>()
+    //TODO: Can we avoid the any here?
+    const ref = React.useRef<any>()
 
     useFrame(({clock, raycaster}) => {
         // TODO: Clean up?
         if (ref == null || !ref.current) return
-        if(raycaster.intersectObject(ref.current).length > 0)
-        {
+        if (raycaster.intersectObject(ref.current).length > 0) {
             ref.current.rotation.y -= 0.01
         }
     })
 
     return (
         <group position={position} rotation={[0, Math.PI, 0]} scale={7}>
-            {/*<Clone object={box.nodes.lid} castShadow receiveShadow/>*/}
-            {/*<Clone object={box.nodes.lid} castShadow receiveShadow rotation={[1,0,0]}/>*/}
-
             <Clone object={box.nodes.pizzaBox} castShadow receiveShadow/>
             <mesh ref={ref}>
                 <Clone object={pizza.scene} position={[0, 0.05, 0]} castShadow receiveShadow/>
