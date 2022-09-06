@@ -1,7 +1,9 @@
 import {Html} from "@react-three/drei";
 
 type Props = {
-    position: [number, number, number], label: string, text: string
+    position: [number, number, number],
+    label: string,
+    text: string | JSX.Element
 };
 
 export default function InfoBox({position, label, text}: Props) {

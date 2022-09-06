@@ -21,7 +21,8 @@ function Room03({onClick}: { onClick: (pos: [number, number, number]) => void })
                  color={"#3C6792"}>
         <RotatingCar position={[3.2, 1, -2.5]}/>
         <InfoBox position={[3.2, 2, -7]} label={"3"}
-                 text={'🚗 Cars are pretty good too! This one runs on renewable fuel made from recycled pixels. That\'s a fact.'}/>
+                 text={<>🚗 Cars are pretty good too! This one runs on renewable fuel made from recycled pixels. This
+                     and all 3D models are from <a href="https://kenney.nl">kenney.nl</a></>}/>
     </Room>;
 }
 
@@ -158,9 +159,12 @@ function App() {
                 <Inner/>
             </Canvas>
             <div className="absolute left-0 bottom-0 m-2 p-2 bg-white/50 rounded-xl text-sm ">
-                <p>🧛 Built by <a href="https://twitter.com/Wahlstra">@Wahlstra</a> with React-Three-Fiber. Repo <a href="https://github.com/magnuswahlstrand/demo-threejs-fiber-rooms">here</a></p>
-                <p>🍕 Inspiration by Bruno Simon's <a href="https://threejs-journey.com/">excellent course on Three JS</a></p>
-                <p>🚗 <span className={"font-bold"}>Click the rooms</span> to move the camera. <span className={"font-bold"}>Hover the numbers</span> to get more information.</p>
+                <p>🧛 Built by <a href="https://twitter.com/Wahlstra">@Wahlstra</a> with React-Three-Fiber. Repo <a
+                    href="https://github.com/magnuswahlstrand/demo-threejs-fiber-rooms">here</a></p>
+                <p>🍕 Inspiration by Bruno Simon's <a href="https://threejs-journey.com/">excellent course on Three
+                    JS</a></p>
+                <p>🚗 <span className={"font-bold"}>Click the rooms</span> to move the camera. <span
+                    className={"font-bold"}>Hover the numbers</span> to get more information.</p>
             </div>
         </div>
     )

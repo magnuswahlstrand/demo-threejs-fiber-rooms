@@ -1,6 +1,6 @@
 # 3 Rooms Three.js Scene
 
-A small 3D showcase, written after completing 50% of [Bruno Simon's](https://twitter.com/bruno_simon) excellent course on ThreeJS. Written with [React-Three-Fiber](https://github.com/pmndrs/react-three-fiber).
+A small 3D showcase, written after completing 50% of [Bruno Simon's](https://twitter.com/bruno_simon) excellent course on ThreeJS. Written with [React-Three-Fiber](https://github.com/pmndrs/react-three-fiber), 3D models from [kenney.nl](https://kenney.nl).
 
 The scene is inspired by the **3D course overview** from [threejs-journey.com](https://threejs-journey.com/).
 
